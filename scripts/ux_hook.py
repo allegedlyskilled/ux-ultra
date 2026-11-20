@@ -6,14 +6,14 @@
                       the lesson. Agents mid-task otherwise never load the skill.
   ux_hook.py learned  PostToolUse on Write|Edit: when learned.md gains an entry, show its
                       heading to the user, whether or not the agent mentions it. If the
-                      skills folder is a git checkout, also commit the file and push it.
-  ux_hook.py pull     SessionStart: pull the skills checkout so lessons from other machines
+                      skill folder is a git checkout, also commit the file and push it.
+  ux_hook.py pull     SessionStart: pull the skill's checkout so lessons from other machines
                       arrive before the session needs them.
 """
 import json, re, subprocess, sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[2]  # the skills folder, when it is a git checkout
+REPO = Path(__file__).resolve().parents[1]  # the skill folder, when it is a git checkout
 
 UI = re.compile(r"\b(ui|ux|layout|padding|margin|spacing|align\w*|header|footer|nav\w*|menu|sidebar|panel|pane|"
                 r"button|icon|hover|cursor|font|colou?rs?|contrast|border|divider|shadow|blur|glass|modal|dialog|"
@@ -62,7 +62,7 @@ def push_lesson(got):
         return
     names = ", ".join(h.split(": ", 1)[-1] for h in got)
     done = subprocess.run(["git", "-C", str(REPO), "commit", "-q", "-m", "Add ux-ultra lesson: " + names,
-                           "--", "ux-ultra/references/learned.md"], capture_output=True, timeout=8)
+                           "--", "references/learned.md"], capture_output=True, timeout=8)
     if done.returncode == 0:  # push in the background so a slow network never holds up the session
         subprocess.Popen(["sh", "-c", 'git -C "$0" pull --rebase --autostash -q && git -C "$0" push -q', str(REPO)],
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
