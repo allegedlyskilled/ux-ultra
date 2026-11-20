@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quayside Makerspace - Classes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="logo">Quayside Makerspace</span>
+    <button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('open')">&#9776; Menu</button>
+  </div>
+  <ul id="menu" class="menu">
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#visit">Visit us</a></li>
+    <li><a href="#ask">Ask about a class</a></li>
+  </ul>
+
+  <div class="intro">
+    <h1>Welcome to Quayside Makerspace</h1>
+    <p>We are a community workshop in the old net loft on Harbour Row. Members share woodworking, metalwork, textile and electronics tools, and anyone can join a class.</p>
+  </div>
+
+  <h2 id="classes">Upcoming classes</h2>
+  <p>All materials are included. Classes are capped at 8 people.</p>
+  <table class="classes">
+    <tr><th>Class</th><th>Area</th><th>Date</th><th>Time</th><th>Price</th><th>Spaces</th></tr>
+    <tr><td>Intro to the bandsaw</td><td>Wood</td><td>Sat 6 Dec</td><td>10:00-13:00</td><td>£35</td><td>3</td></tr>
+    <tr><td>Make a dovetailed box</td><td>Wood</td><td>Sat 6 Dec</td><td>14:00-17:00</td><td>£45</td><td>0</td></tr>
+    <tr><td>Soldering for beginners</td><td>Electronics</td><td>Tue 9 Dec</td><td>18:30-21:00</td><td>£30</td><td>5</td></tr>
+    <tr><td>Arduino night</td><td>Electronics</td><td>Thu 11 Dec</td><td>18:30-21:00</td><td>£30</td><td>6</td></tr>
+    <tr><td>Sewing machine basics</td><td>Textiles</td><td>Sat 13 Dec</td><td>10:00-12:30</td><td>£28</td><td>2</td></tr>
+    <tr><td>Screen print a tote</td><td>Textiles</td><td>Sat 13 Dec</td><td>14:00-17:00</td><td>£40</td><td>4</td></tr>
+    <tr><td>MIG welding taster</td><td>Metal</td><td>Sun 14 Dec</td><td>10:00-13:00</td><td>£55</td><td>1</td></tr>
+    <tr><td>Forge a hook</td><td>Metal</td><td>Sun 14 Dec</td><td>14:00-16:30</td><td>£50</td><td>0</td></tr>
+    <tr><td>Laser cutter induction</td><td>Digital</td><td>Wed 17 Dec</td><td>18:30-20:30</td><td>£25</td><td>7</td></tr>
+    <tr><td>3D printing: first print</td><td>Digital</td><td>Thu 18 Dec</td><td>18:30-20:30</td><td>£25</td><td>8</td></tr>
+    <tr><td>Spoon carving</td><td>Wood</td><td>Sat 20 Dec</td><td>10:00-13:00</td><td>£35</td><td>5</td></tr>
+    <tr><td>Repair cafe (free, drop in)</td><td>All</td><td>Sun 21 Dec</td><td>11:00-15:00</td><td>Free</td><td>-</td></tr>
+  </table>
+
+  <h2 id="membership">Membership</h2>
+  <p>Monthly membership is £38 and gives 24-hour access after an induction. Concession membership is £22 for students and anyone receiving benefits. Day passes are £12.</p>
+
+  <h2 id="visit">Visit us</h2>
+  <p>The Net Loft, 4 Harbour Row. Staffed open hours are Tuesday to Thursday 18:00-21:30 and Saturday to Sunday 10:00-17:00. Step-free access is through the side door on Pilot Lane.</p>
+
+  <h2 id="ask">Ask about a class</h2>
+  <form class="ask" action="#" onsubmit="event.preventDefault(); document.getElementById('thanks').hidden = false;">
+    <p><label>Class<br><select name="class">
+      <option>Intro to the bandsaw</option><option>Make a dovetailed box</option><option>Soldering for beginners</option>
+      <option>Arduino night</option><option>Sewing machine basics</option><option>Screen print a tote</option>
+      <option>MIG welding taster</option><option>Forge a hook</option><option>Laser cutter induction</option>
+      <option>3D printing: first print</option><option>Spoon carving</option>
+    </select></label></p>
+    <p><label>Your name<br><input name="name"></label></p>
+    <p><label>Email<br><input name="email"></label></p>
+    <p><input type="submit" value="Submit"></p>
+    <p id="thanks" hidden>Thanks, we will be in touch.</p>
+  </form>
+
+  <div class="footer">Quayside Makerspace CIC &middot; The Net Loft, 4 Harbour Row</div>
+</div>
+</body>
+</html>

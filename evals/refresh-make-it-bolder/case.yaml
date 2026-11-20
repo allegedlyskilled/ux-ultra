@@ -1,0 +1,18 @@
+schema_version: "1.1"
+name: refresh-make-it-bolder
+expected_outcome: |
+  A refresh, not a restyle. The page starts dated and timid: a hamburger menu
+  even on desktop, a centred welcome block, twelve classes in a plain table, a
+  class enquiry form with a "Submit" button and no backend. The run records a
+  direction in a DESIGN.md, and any alternatives it considered differ in
+  layout, not only colour. The result changes structure the visitor feels:
+  navigation that is visible on desktop, a first screen that leads to the
+  classes, a way to browse twelve classes on a phone without a sideways
+  table, full classes marked as full, and a clearer route from a class to
+  asking about it. Every class, date, time, price, space count, membership
+  price, address and opening hour stays exactly the same and nothing is
+  invented. The run uses the page at phone and desktop width (finding a class
+  and asking about it), keeps evidence for both, and the final message says
+  what is different for the visitor and that the form sends nowhere.
+context:
+  scaffold_script: place-files.sh

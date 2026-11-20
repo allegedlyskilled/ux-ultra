@@ -1,0 +1,15 @@
+schema_version: "1.1"
+name: catalogue-needs-filtering
+expected_outcome: |
+  The page starts as all 2,000 parts dumped into one wide table, with a search
+  box that only matches an exact SKU. The run sizes the pattern to the data:
+  search plus filters on the attributes people choose by (category, brand,
+  package, rating, price, in stock), several values allowed within one filter,
+  a visible summary of applied filters that can each be removed, a live count
+  of matches, and an empty state with a way out when nothing matches. All
+  2,000 parts stay reachable and catalogue.json is unchanged. On a phone the
+  filters are reachable and the results readable without sideways scrolling.
+  The run actually applies filters in the browser at phone and desktop width
+  and keeps evidence for both.
+context:
+  scaffold_script: place-files.sh

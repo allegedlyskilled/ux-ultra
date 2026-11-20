@@ -1,0 +1,16 @@
+body { margin: 0; background: #eeeeee; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333333; }
+.wrap { max-width: 760px; margin: 0 auto; background: #ffffff; padding: 20px 30px; }
+.top { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #3366aa; padding-bottom: 10px; }
+.logo { font-size: 20px; font-weight: bold; color: #3366aa; }
+.menu-btn { background: #3366aa; color: #ffffff; border: 0; padding: 6px 10px; font-size: 14px; }
+.menu { display: none; list-style: none; margin: 0; padding: 0; background: #f4f4f4; }
+.menu.open { display: block; }
+.menu li a { display: block; padding: 8px 10px; color: #3366aa; }
+.intro { text-align: center; padding: 20px 0; }
+h1 { font-size: 24px; color: #3366aa; }
+h2 { font-size: 18px; color: #3366aa; margin-top: 30px; }
+table.classes { width: 100%; border-collapse: collapse; }
+table.classes th, table.classes td { border: 1px solid #cccccc; padding: 6px; text-align: left; }
+table.classes th { background: #3366aa; color: #ffffff; }
+.ask input, .ask select { padding: 4px; font-size: 13px; }
+.footer { margin-top: 40px; border-top: 1px solid #cccccc; padding-top: 10px; font-size: 12px; color: #777777; text-align: center; }

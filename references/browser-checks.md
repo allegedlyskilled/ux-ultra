@@ -4,7 +4,7 @@ Run the script below through the browser tool's JavaScript call (Claude in Chrom
 
 ## Getting the width right
 
-Serve the page over HTTP (`python3 -m http.server <port>` from the project folder, in the background; stop it when done). Then set the width by emulating the viewport where the tool can, because resizing a real window can be clamped by the screen or host and silently fail:
+Serve the page over HTTP (`python3 -m http.server --bind 127.0.0.1 <port> --directory <folder>`, in the background; stop it when done). Binding to 127.0.0.1 keeps the folder off the local network, and `--directory` avoids a `cd` first. Then set the width by emulating the viewport where the tool can, because resizing a real window can be clamped by the screen or host and silently fail:
 
 - **Chrome DevTools MCP:** `emulate` with `viewport: "375x812x2,mobile,touch"`, then `"1440x900x1"`. Each `emulate` call resets earlier settings, so pass the viewport and any network throttling in the same call.
 - **Playwright MCP:** `browser_resize` sets the page viewport of its own browser and is usually honoured; the server can also start with `--viewport-size`.

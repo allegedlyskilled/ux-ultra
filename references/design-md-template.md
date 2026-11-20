@@ -18,7 +18,7 @@ The `tokens` block is read by `scripts/slop_lint.py`. Keep it in sync with the p
 
 ### Directions considered
 
-*All three directions from Step 1, the chosen one included, one short block each: name, palette (background and accent hex), type genre, layout structure, and why it was or wasn't picked. A later session uses this to see what was already ruled out.*
+*All three directions from Step 1, the chosen one included, one short block each: name, palette (background hex and its kind, such as white, tinted paper, dark or colour field, plus accent hex), type genre, layout structure, and why it was or wasn't picked. A later session uses this to see what was already ruled out.*
 
 ## Tokens
 

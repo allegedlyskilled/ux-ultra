@@ -42,6 +42,7 @@ Once cream, near-black and the SaaS kit were flagged, test runs converged on a n
 
 - Pale tinted "paper" (green-grey, blue-grey, around `#EEF2EA` to `#F4F6F3`) with blue ruled lines, a red double rule under totals, and a book serif such as Literata for headings and figures: the ledger look, on every finance or invoicing page.
 - A manila or yellow "repair tag" with a punched hole holding the form or the prices, enamel-blue accents and a condensed grotesque: the workshop look, on every trade or repair page.
+- A white or near-white page with one dark accent (near-black, navy or a single saturated colour) and nothing else: where a restyled pricing or landing page drifts once the louder grounds are flagged, so two competitors' pages become interchangeable. Choose the ground on purpose (a tinted ground, dark, or a colour field) and record it in DESIGN.md; white is fine when it was chosen, not defaulted to.
 - More generally, the category's first metaphor rendered literally: a ledger for money, a tag for repairs, a terminal for developer tools, a notebook for writing apps.
 
 None is wrong for every brief. Each is the first thing that comes to mind for its category, which is why it repeats.
