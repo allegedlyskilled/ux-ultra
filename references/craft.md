@@ -23,6 +23,7 @@ These are the rules experienced product designers apply without thinking. The co
 - More space between groups than within them. If everything has the same gap, nothing is grouped.
 - Start with too much space and remove it. Separate with space or a background change before reaching for a border.
 - Dense tools (tables, dashboards, editors) stay calm by cutting noise, not by adding whitespace: fewer separators, dimmer chrome.
+- Compose the first screen to the viewport. At desktop width nothing sits beside or under the content as an empty half or an empty band: the main panel grows to fill it, a second column carries the visual, or the content is centred on purpose. Space is something you place, not what's left over after the content stops. Check the 1440 screenshot for the largest empty rectangle and give it a job.
 
 ## Colour
 
@@ -31,9 +32,15 @@ These are the rules experienced product designers apply without thinking. The co
 
 ## Depth
 
+- A screen needs at least two surface levels, such as the page and the cards or panels on it, and usually a third for what is raised or active. Separate them with a small tonal step from the palette, a hairline at low contrast or a soft shadow, picked once in DESIGN.md. One flat colour edge to edge with text sitting on it reads as a wireframe, however good the colour is. Removing gradients, glass and glow is not the same as removing depth.
 - One light source for the whole UI. Higher elevation means more offset and more blur.
 - Layered shadows tinted with the background hue look real; a single grey `rgba(0,0,0,.1)` looks pasted on.
 - Nested corners: inner radius = outer radius minus the padding between them, never below about 4px, so the corners look concentric. Adapted from the unslop skill by Damir Sokolovsky (CC BY 4.0), 2026.
+
+## Finish
+
+- Replace what you remove. An emoji used as an icon becomes a real icon from one set (the project's own, or a single open line set at one size and stroke), not a bare label, unless the row reads better without any. A stripped glow leaves a surface step or a hairline behind. A page that only had things taken out looks unfinished.
+- Small exact details carry a tool: tabular figures for numbers that line up, a monospace or condensed cut for counts and dates if DESIGN.md has one, real keycaps for shortcuts, one consistent marker for the current item.
 
 ## Waiting
 
@@ -55,9 +62,10 @@ Skeletons belong to containers and data views only. Never put one on a toast, a 
 
 ## Hero visuals
 
-- Only screens that need a visual get one: landing heroes, empty states, onboarding. Dashboards and settings almost never do.
+- A landing hero, the top of a pricing or marketing page, an empty state and onboarding each get a visual; a headline with buttons and nothing beside it is unfinished. Dashboards and settings don't get an image, but a dashboard's main stat or chart can carry one small product detail of the same kind.
 - Write the visual's subject as one plain sentence before making anything. If you can't, the idea isn't clear yet.
-- The default visual is a preview of the product built in code, showing the one moment that proves the headline, not the whole app. Fill it only with facts the brief gives; the "Only facts you were given" rule in SKILL.md still applies.
+- The default visual is a preview of the product built in code (HTML, CSS, SVG), showing the one moment that proves the headline, not the whole app: the invoice it produces, the booking it confirms, the report it draws. Give it the same surfaces, type and radii as the rest of the page so it reads as the product, not a picture of one.
+- Fill the preview with the brief's facts where it has them and with sample data where it doesn't. Sample data is what one customer of the product would see: an example client, line items, dates, amounts. Make it plausible, keep it consistent (the lines add up to the total) and let the frame show it's an example, by being an obvious mock-up or carrying a small "Example" label. It never says anything about the business itself: no ratings, customer counts, savings, awards, testimonials, real company names or logos, and no feature the brief didn't name. Those stay under the "Only facts you were given" rule in SKILL.md. List the sample data in the hand-back.
 - Match the image's edges to the page background, or fade them with a mask. A hard rectangle of another colour looks pasted in.
 - No text, logos or fake UI inside a generated image. Give every image fixed dimensions.
 - Image generation is optional. If a tool for it is available, show the user the prompt, model and size and ask before running it, since it can cost money. If not, leave an empty slot at the final size and put the prompt in the hand-back.
