@@ -122,7 +122,7 @@ It is async because it waits for web fonts to settle; every tool's JavaScript ca
 - `zoomBlocked`: must be false.
 - `h1Count` should be 1; `headingSkips` 0; `imagesWithoutAlt` and `imagesWithoutSize` 0.
 - `glass`: one entry per element with a backdrop blur. `worstContrast` is its text against the surface laid over pure black and over pure white, since anything can scroll behind it; under 4.5 means the surface needs more opacity (see `glass.md`), not more blur. `nested: true` is glass inside glass. More than one distinct `blur` value across surfaces is worth a look.
-- `distinctRadii` with one value, or `distinctShadows` of 1 across many elements, is the uniformity tell, unless DESIGN.md chose it.
+- `distinctRadii` with one value, or `distinctShadows` of 1 across many elements, is the uniformity tell, unless DESIGN.md chose it. `distinctShadows` of 0 on a screen that has cards, panels or a hero visual means nothing is raised: the page is flat (see `craft.md`, "Depth").
 
 The background estimate walks up to the first opaque ancestor, so text over images or gradients can be reported wrongly; check those by eye in the screenshot. Hidden states (an error message that only appears after a failed submit) aren't measured until you trigger them, so run the script again with each state showing.
 

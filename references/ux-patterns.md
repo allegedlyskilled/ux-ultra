@@ -24,7 +24,7 @@ Read this when a screen has a filterable list, mobile navigation, a horizontal r
 - **The data picks the chart.** A trend over time is a line. A comparison is bars. A share of a whole is one stacked bar or a list with bars. Progress toward a single goal is a progress bar.
 - **Plain stat cards.** A label, a figure, and the change with what it's compared to. No sparklines, mini bars or icons added to fill the space.
 - **Vary the widths.** A row of equal cards side by side, each holding the same kind of content, reads as a template. Give the main chart more room and smaller items less.
-- **Quiet chart chrome.** Gridlines and axis labels in a muted tone. Bars in one series share one colour, never a rainbow.
+- **Quiet chart chrome.** Gridlines and axis labels in a muted tone. Bars in one series share one colour, never a rainbow. The bars that aren't the point stay light: a tint a few steps off the surface, not a mid-grey block, so the accented one carries the chart in both themes.
 
 Adapted from the unslop skill by Damir Sokolovsky (CC BY 4.0), 2026.
 

@@ -14,7 +14,7 @@ Checked against 2026 design commentary on 2026-11-18. Both the first and second 
 - Centred hero with a pill badge above the headline and two buttons below.
 - Three identical cards with an icon on top, then a stats row, then a "how it works" 1-2-3, then a closing CTA band.
 - One large radius and one soft shadow (`rgba(0,0,0,.1)`, `shadow-lg`) on every card.
-- Glassmorphism (backdrop blur), glows, gradient blobs behind content. Glass can be a real decision (frosted layers over media or a canvas); when it is, `glass.md` says how to do it so it doesn't read as this.
+- Glassmorphism (backdrop blur) on every surface, glows with nothing casting them, gradient blobs in several hues behind content. One pool of the accent behind the main visual is finish, not this. Glass can be a real decision (frosted layers over media or a canvas); when it is, `glass.md` says how to do it so it doesn't read as this.
 - Every section fades and slides up on scroll.
 - Cards that scale up on hover. A colour or surface step shows the card is live without nudging the layout.
 - Headings at weight 800 or 900. Size and colour can carry the hierarchy; extra weight just shouts.
@@ -47,13 +47,19 @@ Once cream, near-black and the SaaS kit were flagged, test runs converged on a n
 
 None is wrong for every brief. Each is the first thing that comes to mind for its category, which is why it repeats.
 
+## The over-corrected look
+
+Treating this file as a list of things to strip produces a page as recognisable as the first wave, and it reads as twenty years old instead of generated: a flat saturated or plain field, body and table text at 14px, corners of 3 to 6px, outlined buttons, a bare table standing in for the product, heavy black fills, and no light anywhere. This skill's own test runs landed here three times while passing every other check.
+
+Gradients, soft shadows, large radii, glow and dark themes are not the tells. The tells are the *undecided* versions: indigo because nothing was chosen, the same shadow on every card, blobs in three hues behind a headline, glass on everything, gradient on the text. A large radius scale, a filled button lit from above, a deep layered shadow under the one thing that is raised, and a pool of the product's own accent behind its main visual are what a current interface is made of. `craft.md`, "Depth" and "Finish", has the values. Remove a tell by replacing it with the decided version, never with nothing.
+
 ## The four layers
 
 Reading tells by layer helps find the ones a colour list misses.
 
 1. **Token defaults**: the font, the accent hex, one radius, one shadow.
 2. **Template structure**: hero, badge, three cards, stats, steps, CTA, regardless of what the page is for.
-3. **Decoration with no job**: gradients, glass, glow, coloured stripes on card edges, emoji as icons, a sparkle icon on anything AI (say what the feature does instead), pulsing or pinging dots on things that aren't live (keep the pulse for what is).
+3. **Decoration with no job**: gradients, glass, glow (replace them with real depth, not with nothing: `craft.md`, "Depth", says how surfaces, layered shadows and a lit ground do the same work on purpose), coloured stripes on card edges, emoji as icons, a sparkle icon on anything AI (say what the feature does instead), pulsing or pinging dots on things that aren't live (keep the pulse for what is).
 4. **Omission**: no empty, loading or error states; no hover or focus states; every button styled as primary; a change with nothing to compare it to ("+12%" where "+12% vs last month" says something); the same gap between everything so nothing is grouped; no progressive disclosure. Uniformity is a tell of its own: one radius, one shadow, one weight, one padding.
 
 The fourth layer is the one users actually hit, and the one a screenshot of the happy path never shows.

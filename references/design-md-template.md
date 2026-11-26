@@ -41,8 +41,20 @@ font.display     "Fraunces"
 font.body        "Source Sans 3"
 
 # shapes
-radius           3px 8px 999px
-shadow           0 1px 2px rgba(29,36,33,.08)
+radius           8px 14px 22px 999px
+# surfaces by role, and the layered shadow paired with each raised one (see craft.md, "Depth")
+color.sunken     #EFE9DD
+color.raised     #FFFDF9
+color.overlay    #FFFFFF
+shadow.raised    0 0 0 1px rgb(29 36 33 / .05), 0 2px 4px rgb(29 36 33 / .05), 0 18px 36px -12px rgb(29 36 33 / .16)
+shadow.overlay   0 0 0 1px rgb(29 36 33 / .05), 0 2px 4px rgb(29 36 33 / .05), 0 24px 48px -12px rgb(29 36 33 / .22)
+# the main visual on a marketing page: raised, plus a wide ambient layer in a dark shade of the accent
+shadow.visual    0 0 0 1px rgb(29 36 33 / .05), 0 18px 36px -12px rgb(29 36 33 / .16), 0 60px 100px -30px rgb(31 74 54 / .38)
+# dark theme: the same roles, lighter as they rise
+color.dark.page    #121614
+color.dark.raised  #1D2320
+color.dark.ink     #EEF2EF
+color.dark.accent  #5FB98C
 
 # lint switches: rule ids from slop_lint.py
 allow            # e.g. uppercase-eyebrow if small caps labels are a deliberate choice
@@ -55,14 +67,14 @@ ban              # rule ids to treat as errors in this project
 
 | Role | Family | Size / line height | Weight |
 |---|---|---|---|
-| Display | Fraunces | 56/60 | 700 |
+| Display | Fraunces | 80/80, -0.03em | 700 |
 | Heading | Fraunces | 28/34 | 600 |
 | Body | Source Sans 3 | 17/28 | 400 |
 | Small | Source Sans 3 | 14/20 | 500 |
 
 ## Space, radius, elevation
 
-*Spacing scale (e.g. 4, 8, 12, 16, 24, 40, 64). Where each radius applies: inputs and buttons get the small one, panels the medium one, pills the round one. Where shadows apply, if anywhere: hierarchy should come from space and type first.*
+*Spacing scale (e.g. 4, 8, 12, 16, 24, 40, 64). Where each radius applies: inputs and buttons get the small one, panels the medium one, pills the round one. The surface roles (sunken, page, raised, overlay), which components sit on each, the shadow paired with raised and with overlay, how the page ground is lit (the top-to-bottom shift and the pool of light behind the main visual), and the dark theme's surfaces, edge highlight and glow. Both themes are built unless the product fixes one. Say which one or two things on a typical screen are raised.*
 
 ## Motion
 

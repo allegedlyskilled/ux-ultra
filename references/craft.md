@@ -32,13 +32,40 @@ These are the rules experienced product designers apply without thinking. The co
 
 ## Depth
 
-- A screen needs at least two surface levels, such as the page and the cards or panels on it, and usually a third for what is raised or active. Separate them with a small tonal step from the palette, a hairline at low contrast or a soft shadow, picked once in DESIGN.md. One flat colour edge to edge with text sitting on it reads as a wireframe, however good the colour is. Removing gradients, glass and glow is not the same as removing depth.
-- One light source for the whole UI. Higher elevation means more offset and more blur.
-- Layered shadows tinted with the background hue look real; a single grey `rgba(0,0,0,.1)` looks pasted on.
+A page with correct colours and no light on it reads as a wireframe. Gradients, glass and glow are on the tells list because of how they get misused, not because surfaces should be unlit: taking them out and putting nothing back is the commonest way a restyle ends up flat. Depth comes from three things used together, each defined once in DESIGN.md.
+
+**Surfaces by role.** Name four and use them by what they contain, not by how important the thing feels: *sunken* (wells, inputs, the track behind a control), *page*, *raised* (cards, panels, the main figure) and *overlay* (menus, popovers, dialogs). This is the model current systems share: Material 3 replaced its elevation tint with five surface-container roles, and Atlassian uses sunken, default, raised and overlay (both as of 2026). Each role is a small lightness step from its neighbour, taken from the palette.
+
+**A shadow paired with each raised role.** Raised surfaces get the raised shadow and overlays the overlay shadow, never mixed, and a tonal step on its own is not enough in a light theme. Build every shadow from layers, never one `box-shadow` value:
+
+| Layer | Job | Starting values (light theme) |
+|---|---|---|
+| Top-edge highlight | the lit upper edge | `inset 0 1px 0 rgb(255 255 255 / .35)` on coloured or dark surfaces |
+| Contact | where the surface meets the page | `0 0 0 1px rgb(0 0 0 / .05), 0 2px 4px rgb(0 0 0 / .05)` |
+| Key | direction and height | raised: `0 18px 36px -12px rgb(0 0 0 / .16)`; overlay: `0 24px 48px -12px rgb(0 0 0 / .22)` |
+| Ambient (the main visual and overlays) | soft, wide, tinted | `0 60px 100px -30px` in a dark shade of the accent at 30 to 40% |
+
+These are sized to be seen. A 2px shadow at 14% passes a code check and is invisible on the page, which is how a run of this skill's own tests came out flat with "correct" shadows in the CSS. Dense app screens use the contact and key layers at about half these sizes; the main visual of a marketing page uses all four. As height rises, offset, blur and negative spread grow while each layer's opacity stays moderate; a dark, tight shadow reads as a sticker. Fluent 2 derives its key layer the same way: for level *n*, `0 n/2 n` at 14% black. The values above follow the layered recipes Fluent 2 and Frappe UI publish (2026); tune them, and swap black for a darker shade of the page's own hue. Light comes from above for the whole UI: every offset is positive on y and zero on x. Use `filter: drop-shadow()` for shapes that aren't rectangles.
+
+**Dark themes: lighter surface, and keep the shadow.** A shadow alone disappears on a dark page, so each higher role is a lighter tone (a raised card a few points lighter than the page, itself lit top to bottom), with a 1px light edge (`inset 0 1px 0 rgb(255 255 255 / .14), 0 0 0 1px rgb(255 255 255 / .07)`), a deep drop shadow (`0 40px 80px -20px rgb(0 0 0 / .8)`) and, on the main visual, a wide glow in the accent (`0 0 140px -10px` at 40 to 50%).
+
+**A lit ground.** The page background is a surface too, and the light on it has to be visible in a screenshot shrunk to a third of its size. Two layers: a top-to-bottom shift of a few lightness points across the page, and one pool of light behind the main visual, a radial gradient about 900 by 600px in a tint of the accent that fades to nothing. On a light ground the pool is a pale tint of the accent; on a dark ground it is the accent itself at 40 to 50% opacity. Derive both from the accent token with `color-mix()` so the lint's palette check passes. Raised surfaces can be lit top to bottom the same way. Declare the interpolation space (`linear-gradient(in oklab, ...)`); sRGB mixes go grey in the middle. Still tells: gradient-filled text, several blobs in different hues, glow behind text with no object casting it, a two-hue sweep across a hero. One pool of light in the product's own accent, behind the thing the page is showing, is not a tell.
+
+**How much.** Most of the screen stays on the page surface. One or two things are raised, and what is raised is what matters; if every block has the shadow, nothing is lifted, which is the uniformity tell again. Marketing pages can carry more light than dense tools, where the tonal steps and the highlight edge do the work and shadows are kept for overlays.
+
+- Derive the steps instead of hand-picking each one: `color-mix(in oklab, var(--page) 92%, white)` for a raised tone, `oklch(from var(--page) calc(l - .03) c h)` for a sunken one, and `light-dark()` to hold both themes in one token (set `color-scheme: light dark` on `:root`). `light-dark()` takes colours only, so shadow geometry that differs by theme needs its own custom properties. Based on web.dev and Chrome's guidance, 2025.
 - Nested corners: inner radius = outer radius minus the padding between them, never below about 4px, so the corners look concentric. Adapted from the unslop skill by Damir Sokolovsky (CC BY 4.0), 2026.
 
 ## Finish
 
+Stripping the tells and stopping there produces its own recognisable page: small type on a flat field, tight corners, outlined buttons and a bare table as the visual. It reads as old, not as considered. These are the things that make a screen read as current (2026); DESIGN.md records the exact values.
+
+- **Type with range.** On a marketing page the display size is 72 to 96px at desktop, tracking -0.03 to -0.04em, line height about 1, and the lead paragraph 20 to 22px. Body never drops below 16px and small text below 13px. App screens keep the sizes in "Type" above.
+- **Soft shapes.** A radius scale along the lines of 8, 14, 22: buttons and inputs 12 to 14px, cards and the main visual 20 to 24px, pills for chips. Radii of 3 to 6px on buttons and cards are what date a page fastest.
+- **A primary button with weight.** Filled with the accent, lit top to bottom, with a top-edge highlight and a shadow in the accent's own hue (`inset 0 1px 0 rgb(255 255 255 / .35), 0 10px 22px -8px` in the accent at about 60%). The secondary button is a surface with a hairline and a small shadow, not an outline on nothing.
+- **A main visual in layers.** The product preview is at least two overlapping pieces: the main card, and a smaller card that breaks its edge and shows the outcome (the confirmation, the notification, the total). A tilt of one or two degrees on the main card is optional. A single rectangle holding a table is a table, not a visual.
+- **Light and dark, both.** Build both themes unless the product has fixed one: `color-scheme: light dark` on `:root`, colours held in `light-dark()` tokens, shadows and the pool of light as per-theme custom properties. The page follows the system setting on first load; a manual switch only overrides it and is never the only way to reach a theme. Screenshot both.
+- **Thumbnail test.** Shrink the 1440 screenshot to 800px wide and look at it. The headline, the primary button, the raised visual and the light behind it must all still be visible. If it reads as a flat colour with small text, it isn't finished, whatever the CSS says.
 - Replace what you remove. An emoji used as an icon becomes a real icon from one set (the project's own, or a single open line set at one size and stroke), not a bare label, unless the row reads better without any. A stripped glow leaves a surface step or a hairline behind. A page that only had things taken out looks unfinished.
 - Small exact details carry a tool: tabular figures for numbers that line up, a monospace or condensed cut for counts and dates if DESIGN.md has one, real keycaps for shortcuts, one consistent marker for the current item.
 
